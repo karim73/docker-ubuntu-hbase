@@ -4,15 +4,18 @@ FROM gelog/java:openjdk7
 MAINTAINER Julien Beliveau
 
 # Setting HBASE environment variables
-ENV HBASE_VERSION 1.1.1
+ENV HBASE_VERSION 1.1.2
 ENV HBASE_HOME /usr/local/hbase
 ENV PATH $PATH:$HBASE_HOME/bin
 
 
-# Installing wget
+# Installing wget, vim, apache2, locate
 RUN \
     apt-get update && \
     apt-get install -y wget && \
+    apt-get install -y vim && \
+    apt-get install -y apache2 && \
+	apt-get install -y locate && \
     rm -rf /var/lib/apt/lists/*
 
 # Installing HBase
